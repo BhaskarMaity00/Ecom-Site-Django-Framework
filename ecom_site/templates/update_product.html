@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block title %}Products{% endblock title %} 
+{% block body %}
+<!-- product section -->
+
+<section class="product_section">
+  <div class="container">
+        <div class="product_heading" style="margin-bottom: 10px;">
+        <h2>Our Watches</h2>
+        </div>
+        <div class="product_container">
+            {%for product in all_products%}
+                <div class="box" style="width: 250px;">
+                    <div class="box-content">
+                        <div class="img-box" style="margin: 20px 0px;">
+                            <img src="{% static "./images/w1.png" %}" alt="" />
+                        </div>
+                        <div class="detail-box" style="width: 100%; justify-content: center;">
+                            <div class="text">
+                                <form class="form-floating" method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputValue" name="updated_name" placeholder="{{product.item_name}}" value="{{product.item_name}}">
+                                        <label for="floatingInputValue">Item Name</label>
+                                    </div>
+                                    <div class="form-floating mt-2">
+                                        <input type="text" class="form-control" id="floatingInputValue" name="updated_price" placeholder="Rs. {{product.price}}" value="{{product.price}}">
+                                        <label for="floatingInputValue">Item Price</label>
+                                    </div>
+                                    <div class="form-floating mt-2">
+                                        <input type="text" class="form-control" id="floatingInputValue" name="updated_quantity" placeholder="{{product.item_quantity}}" value="{{product.item_quantity}}">
+                                        <label for="floatingInputValue">Item Quantity</label>
+                                    </div>
+                                    <div class="btn-box" style="margin-top: 15px;">
+                                        <button type="submit" class="btn btn-success" name="edit">Edit!</button>
+                                        <button type="submit" class="btn btn-danger" name="delete" style="margin-left: 10px;">Delete!</button>
+                                        <!-- <a href="/update/{{product.id}}" name="update" style="text-decoration: none;">Update!</a> -->
+                                        <!-- <a href="/delete/{{product.id}}" name="delete" style="text-decoration: none; margin-left: 10px;">Delete!</a> -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+{% endblock body %}

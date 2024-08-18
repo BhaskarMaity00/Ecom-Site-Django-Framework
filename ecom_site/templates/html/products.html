@@ -1,0 +1,43 @@
+{% extends "html/navbar_base.html" %} 
+{% load static %} 
+{% block title %}Products{% endblock title %} 
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{%static "./css/style.css"%}">
+</head>
+<!-- product section -->
+<section class="product_section">
+  <div class="container">
+        <div class="product_heading" style="margin-bottom: 10px;">
+        <h2>Our Watches</h2>
+        </div>
+        <div class="product_container">
+            {%for product in all_products%}
+            <div class="box" style="width:250px;">
+                <div class="box-content">
+                  <div class="img-box">
+                    <img src="{% static "./images/w9.png" %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="text">
+                      <h6>{{product.item_name}}</h6>
+                      <h5><span>Rs.</span> {{product.price}}</h5>
+                    </div>
+                    <div class="like">
+                      <h6>Like</h6>
+                      <div class="star_container">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+{% endblock body %}

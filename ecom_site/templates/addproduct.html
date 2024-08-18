@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Add_Update{% endblock title %}
+{% block body %}
+  {% comment %} <!-- contact section --> {% endcomment %}
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Add Product
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/addproduct" method="post">
+              {% csrf_token %}
+              <div>
+                <input type="text" name="item_code" id="item_code" placeholder="Item Code" />
+              </div>
+              <div>
+                <input type="text" name="item_name" id="item_name" placeholder="Item Name" />
+              </div>
+              <div>
+                <input type="number" name="item_quantity" id="item_quantity" placeholder="Quantity" />
+              </div>              
+              <div>
+                <input type="number" name="item_price" id="item_price" placeholder="Price" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  Add
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% comment %} <!-- end contact section --> {% endcomment %}
+{% endblock body %}

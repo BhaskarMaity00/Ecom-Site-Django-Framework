@@ -1,0 +1,195 @@
+{% extends "html/navbar_base.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+{% block page_title %}Dashboard{% endblock page_title %}
+{% block body %}
+    <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+          <!-- ============================================================== -->
+          <!-- Sales Cards  -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <!-- Column -->
+            <a href="{% url "dashboard" %}" class="col-md-6 col-lg-2 col-xlg-3">
+              <div class="card card-hover">
+                <div class="box bg-cyan text-center">
+                  <h1 class="font-light text-white">
+                    <i class="mdi mdi-view-dashboard"></i>
+                  </h1>
+                  <h6 class="text-white"> Dashboard </h6>
+                </div>
+              </div>
+            </a>
+
+            <!-- Column -->
+            <a href="{% url "products" %}" class="col-md-6 col-lg-4 col-xlg-3">
+              <div class="card card-hover">
+                <div class="box bg-danger text-center">
+                  <h1 class="font-light text-white">
+                    <i class="mdi mdi-receipt"></i>
+                  </h1>
+                  <h6 class="text-white"> Products </h6>
+                </div>
+              </div>
+            </a>
+
+            <!-- Column -->
+            <a href="{% url "users" %}" class="col-md-6 col-lg-3 col-xlg-3">
+              <div class="card card-hover">
+                <div class="box bg-success text-center">
+                  <h1 class="font-light text-white">
+                    <i class="mdi mdi-account-multiple"></i>
+                  </h1>
+                  <h6 class="text-white"> Users </h6>
+                </div>
+              </div>
+            </a>
+            <!-- <div class="col-md-6 col-lg-4 col-xlg-3">
+              <div class="card card-hover">
+                <div class="box bg-success text-center">
+                  <h1 class="font-light text-white">
+                    <i class="mdi mdi-chart-areaspline"></i>
+                  </h1>
+                  <h6 class="text-white"> Users </h6>
+                </div>
+              </div>
+            </div> -->
+            <!-- Column -->
+            <!-- Column -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- Sales chart -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-md-flex align-items-center">
+                    <div>
+                      <h4 class="card-title">Site Analysis</h4>
+                      <h5 class="card-subtitle">Overview of Latest Month</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <!-- column -->
+                    <div class="col-lg-9">
+                      <div class="flot-chart">
+                        <div
+                          class="flot-chart-content"
+                          id="flot-line-chart"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="bg-dark p-10 text-white text-center">
+                            <i class="mdi mdi-account fs-3 mb-1 font-16"></i>
+                            <h5 class="mb-0 mt-1">{{total_user}}</h5>
+                            <small class="font-light">Total Users</small>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="bg-dark p-10 text-white text-center">
+                            <i class="mdi mdi-plus fs-3 font-16"></i>
+                            <h5 class="mb-0 mt-1">120</h5>
+                            <small class="font-light">New Users</small>
+                          </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                          <div class="bg-dark p-10 text-white text-center">
+                            <i class="mdi mdi-cart fs-3 mb-1 font-16"></i>
+                            <h5 class="mb-0 mt-1">656</h5>
+                            <small class="font-light">Total Shop</small>
+                          </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                          <div class="bg-dark p-10 text-white text-center">
+                            <i class="mdi mdi-tag fs-3 mb-1 font-16"></i>
+                            <h5 class="mb-0 mt-1">9540</h5>
+                            <small class="font-light">Total Orders</small>
+                          </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                          <div class="bg-dark p-10 text-white text-center">
+                            <i class="mdi mdi-table fs-3 mb-1 font-16"></i>
+                            <h5 class="mb-0 mt-1">100</h5>
+                            <small class="font-light">Pending Orders</small>
+                          </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                          <div class="bg-dark p-10 text-white text-center">
+                            <i class="mdi mdi-web fs-3 mb-1 font-16"></i>
+                            <h5 class="mb-0 mt-1">8540</h5>
+                            <small class="font-light">Online Orders</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- column -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- Sales chart -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Recent comment and chats -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <!-- column -->
+            <div class="col-lg">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Latest Products</h4>
+                </div>
+                <div class="comment-widgets scrollable">
+                  <!-- Comment Row -->
+                  {% if products %}
+                  {% for product in products %}
+                  <div class="d-flex flex-row comment-row mt-0">
+                    <div class="p-2">
+                      <img
+                        src="{% static "./assets/images/users/1.jpg" %}"
+                        alt="user"
+                        width="50"
+                        class="rounded-circle"
+                      />
+                    </div>
+                    <div class="comment-text w-100">
+                      <h6 class="font-medium">{{product.item_name}}</h6>
+                      <span class="mb-3 d-block">Rs. : {{product.price}} | Quantity : {{product.item_quantity}}</span>
+                      
+                      <div class="comment-footer">
+                        {% comment %} <span class="text-muted float-end">April 14, 2021</span> {% endcomment %}
+                        {% comment %} <button
+                          type="button"
+                          class="btn btn-cyan btn-sm text-white">
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-danger btn-sm text-white">
+                          Delete
+                        </button> {% endcomment %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% endif %}  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- column -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- Recent comment and chats -->
+          <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+{% endblock body %}

@@ -1,0 +1,73 @@
+{% extends "html/navbar_base.html" %}
+{% load static %}
+{% block title %} Update {% endblock title %}
+{% block page_title %} Update {% endblock page_title %}
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{%static "./css/style.css"%}">
+</head>
+<!-- product section -->
+<section class="product_section">
+  <div class="container">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show m-0 text-center" role="alert">
+          <strong>{{ message }}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+        <div class="product_container">
+            {%for product in all_products%}
+            <div class="box" style="width:250px;">
+                <div class="box-content">
+                  <div class="img-box">
+                    <img src="{% static "./images/w5.png" %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="text">
+                      <h6>{{product.item_name}}</h6>
+                      <h5><span>Rs.</span> {{product.price}}</h5>
+                      <h5><span>Quantity</span> {{product.item_quantity}}</h5>
+                    </div>
+                    <div class="like">
+                      <h6>Like</h6>
+                      <div class="star_container">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display: flex;">
+                    <div style="margin-right: 20px;">
+                      <form action="{% url "update" product.id %}" method='GET'>
+                        <button type="submit" class="btn btn-outline-success"><span class="mdi mdi-pencil mdi-18px"></button>
+                      </form>
+                    </div>
+                    <a href="{%url "delete" product.id%}" onclick="return showConfirmation()"><button type="button" class="btn btn-outline-danger"><span class="mdi mdi-delete mdi-18px"></span></button></a>
+                  </div>  
+                </div>
+              </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+
+{% block script %}
+<script>
+  function showConfirmation() {
+      if (confirm("Are you sure you want to delete?")) {
+          // If the user clicks "OK" in the confirmation dialog, submit the form
+          return true;
+      } else {
+          // If the user clicks "Cancel" in the confirmation dialog, do nothing
+          return false;
+      }
+  }
+</script>
+{% endblock script %}
+
+{% endblock body %}

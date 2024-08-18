@@ -1,0 +1,147 @@
+
+{% extends "base2.html" %}
+{% load static %}
+{% block title %}Welcome{% endblock title %}
+{% comment %} body block {% endcomment %}
+{% block body %}
+{% comment %} <!-- slider section --> {% endcomment %}
+<section class="slider_section ">
+  <div class="slider_bg_box">
+    <img src="{% static "./images/slider-bg.png" %}" alt="">
+  </div>
+  <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="detail-box">
+                <h1>
+                  Stylish WoMen's Watches
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                </p>
+                <div class="btn-box">
+                  <a href="" class="btn1" style="text-decoration: none;">
+                    Buy Now!
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="detail-box">
+                <h1>
+                  Stylish Men's Watches
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                </p>
+                <div class="btn-box">
+                  <a href="" class="btn1" style="text-decoration: none;">
+                    Buy Now!
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="detail-box">
+                <h1>
+                  Stylish Watches
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                </p>
+                <div class="btn-box">
+                  <a href="" class="btn1" style="text-decoration: none;">
+                    Buy Now!
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="detail-box">
+                <h1>
+                  Stylish Branded Watches
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                </p>
+                <div class="btn-box">
+                  <a href="" class="btn1" style="text-decoration: none;">
+                    Buy Now!
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol class="carousel-indicators">
+      <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+      <li data-target="#customCarousel1" data-slide-to="1"></li>
+      <li data-target="#customCarousel1" data-slide-to="2"></li>
+      <li data-target="#customCarousel1" data-slide-to="3"></li>
+    </ol>
+  </div>
+
+</section>
+{% comment %} <!-- end slider section --> {% endcomment %}
+</div>
+
+{% comment %} <!-- product section --> {% endcomment %}
+
+<section class="product_section ">
+<div class="container">
+  <div class="product_heading">
+    <h2>
+      New Arrivals
+    </h2>
+  </div>
+  <div class="product_container">
+    {%for newarrive in all_products%}
+      <div class="box">
+        <div class="box-content">
+          <div class="img-box">
+              <img src="{% static "./images/w3.png" %}" alt="" />
+          </div>
+          <div class="detail-box" style="width: 100%; justify-content: center;">
+              <div class="text">
+                  <h5 style="text-align: left;">{{newarrive.item_name}}</h5>
+                  <h5 style="text-align: left;"><span>Rs.</span> {{newarrive.price}}</h5>
+                  <h5 style="text-align: center;"><span>Quantity : </span>{{newarrive.item_quantity}}</h5>
+              </div>
+          </div>
+      </div>
+        <div class="btn-box">
+          <a href="" style="text-decoration: none;">
+            Buy Now!
+          </a>
+        </div>
+      </div>
+    {%endfor%}
+  </div>
+</div>
+</section>
+{% comment %} <!-- end product section --> {% endcomment %}
+{% endblock body %}
+    
